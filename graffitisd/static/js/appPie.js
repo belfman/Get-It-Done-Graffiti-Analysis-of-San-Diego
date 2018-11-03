@@ -11,13 +11,6 @@ pieRange: [],
 };
 
 
-
-// var pie = []
-// mynewDataSet.data.forEach(function (value, i) {
-//     pie.push(new myChart)
-// })
-
-// d3.csv("./pieChart.csv")
 d3.json("/piechartdf").then(function(data) {
     console.log(data);
     for(var i in data.district){
@@ -25,10 +18,10 @@ d3.json("/piechartdf").then(function(data) {
         city2.pieRange.push(data.Count1[i]);
     }
     console.log(city2, 'all');
-    drawChart2()
+    drawChart()
 });
 
-function drawChart2() {
+function drawChart() {
     const {district, pieRange} = city2;
     // var colors = ["orange", "DarkOrange", "coral", "Tomato", "OrangeRed", "Gold", "red", "Gold", "Yellow",];
     var colors = ["teal", "blue", "green", "orange", "purple", "brown", "yellow", "red", "magenta"]
@@ -65,3 +58,68 @@ function drawChart2() {
 
 
 
+
+// const distbreakdownarray = []
+
+// d3.json("/piechartdf").then(function(data) {
+//     console.log(data);
+//     for (var i in data.district){
+//         var dist = data.district[i];
+//         var count1 = data.Count1[i];
+//         var count2 = data.Count2[i];
+//         var count3 = data.Count3[i];
+//         if (dist) {
+//             distbreakdownarray.push([dist, count1, count2, count3]);
+//         }
+//     }   
+//     console.log(distbreakdownarray);
+//     drawChart()
+// });
+
+// function distChart(district) {
+//     console.log(district);
+//     var districturl = "/piechart/" + 1;
+//         d3.json(districturl).then(function(dataset) {
+//             console.log(dataset);
+//             var graphpie = new Chart(myChart2, {
+//                 type: "doughnut",
+//                 data: {
+//                     labels: ["0 to 5 days", "6 to 18 days", "Over 18 days"],
+//                     datasets: [{
+//                         data: [chart_df[1], chart_df[2], chart_df[3]]
+//                     }]
+//                 }
+//             })
+//         });
+// }
+
+// var pie = []
+// mynewDataSet.data.forEach(function (value, i) {
+//     pie.push(new myChart)
+// })
+
+
+// function init() {
+//   // Grab a reference to the dropdown select element
+//   var selector = d3.select("#selDistrict");
+
+//   // Use the list of districts to populate the select options
+//   d3.json("/districts").then((districtnumber) => {
+//     districtnumber.forEach((district) => {
+//       console.log(district);  
+//       selector
+//         .append("option")
+//         .text(district)
+//         .property("value", district);
+//     });
+
+//     // Use the first district from the list to build the initial plots
+//     const firstdistrict = districtnumber[0];
+//     distChart(firstdistrict);
+//   });
+// }
+
+// function optionChanged(newDistrict) {
+//     // Fetch new data each time a new sample is selected
+//     distChart(newDistrict);
+// }

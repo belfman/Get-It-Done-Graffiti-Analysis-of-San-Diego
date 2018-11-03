@@ -21,7 +21,7 @@ d3.json("/data").then(function(data) {
     const buffer = {};
     const chartData = [];
     for (var i in data.deltaDate) {
-        if (buffer.district) {
+        if(buffer.district) {
         buffer.district.push(data.deltaDate[i])
         }
         else {
@@ -46,44 +46,44 @@ d3.json("/data").then(function(data) {
     drawChart(chartData);
 });
 
-function drawChart(data) { //define function that creates the charts
-    const {district, deltaDate} = city;
-    const districts = data.map(({ district }) => district);
-    const deltaDateAvgs = data.map(({ deltaDateAvg }) => deltaDateAvg);
-    console.log(districts, 'districts');
-    console.log(deltaDateAvgs, 'deltaDateAvgs')
+// function drawChart(data) { //define function that creates the charts
+//     const {district, deltaDate} = city;
+//     const districts = data.map(({ district }) => district);
+//     const deltaDateAvgs = data.map(({ deltaDateAvg }) => deltaDateAvg);
+//     console.log(districts, 'districts');
+//     console.log(deltaDateAvgs, 'deltaDateAvgs')
 
-    var graffitiChart = new Chart(myChart, {
-        type: "horizontalBar", 
-        data: {
-            labels: districts,
-            datasets: [{
-                label: 'Avg Days' ,
-                data: deltaDateAvgs,
-                backgroundColor: "dodgerblue",
-                borderWidth: 3,
-                borderColor: "nayvblue",
-                hoverBorderWidth: 5,
-                hoverbackgroundColor: "red",
-                hoverBorderColor: "crimson",
-            }],
-        }, 
+//     var graffitiChart = new Chart(myChart, {
+//         type: "horizontalBar", 
+//         data: {
+//             labels: districts,
+//             datasets: [{
+//                 label: 'Avg Days' ,
+//                 data: deltaDateAvgs,
+//                 backgroundColor: "dodgerblue",
+//                 borderWidth: 3,
+//                 borderColor: "nayvblue",
+//                 hoverBorderWidth: 5,
+//                 hoverbackgroundColor: "red",
+//                 hoverBorderColor: "crimson",
+//             }],
+//         }, 
 
-        options: {
-            title: {
-                display: true,
-                text: "Avg # of days between Request and Close"
-            },
-            },
+//         options: {
+//             title: {
+//                 display: true,
+//                 text: "Avg # of days between Request and Close"
+//             },
+//             },
 
-            legend: {
-                position: "right",
-                labels: {
-                    fontColor: "black"
-                }
-            }
-        })
-    };
+//             legend: {
+//                 position: "right",
+//                 labels: {
+//                     fontColor: "black"
+//                 }
+//             }
+//         })
+//     };
 
 
 

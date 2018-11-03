@@ -34,9 +34,26 @@ app = Flask(__name__)
 def index():
 	return render_template("index.html")
 
-# @app.route("/barpie")
-# def index():
-# 	return render_template("barpie.html")
+# @app.route("/districts")
+# def districts():
+# 	"""Return a list of sample names."""
+
+# 	# Use Pandas to perform the sql query
+# 	districts = pd.read_sql_table(table_name = "SDGraffiti3Table", con = "sqlite:///./data/SDGraffiti3.sqlite3")
+# 	sel = [
+# 		districts.district
+# 	]
+
+# 	results = districts.session.query(*sel).filter(districts.district == district).all()
+
+# 	for result in results:
+# 		district_df["district"] = result[0]
+
+# 	print(district_df)
+# 	return jsonify()
+
+#     # Return a list of the column names (sample names)
+# 	return jsonify(list(districts.district)[2:])
 
 @app.route("/data")
 def data():
@@ -53,51 +70,29 @@ def piechartdf():
 	chartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite:///data/pieChart.sqlite3")    
 	return chartdf.to_json()
 
-# @app.route("/metadata/<sample>")
-# def graffiti_data(sample):
-#     """Return the MetaData for a given sample."""
-#     sel = [
-#         graffiti_table.sample,
-#         graffiti_table.ETHNICITY,
-#         graffiti_table.GENDER,
-#         graffiti_table.AGE,
-#         graffiti_table.LOCATION,
-#         graffiti_table.BBTYPE,
-#         graffiti_table.WFREQ,
-#     ]
 
-#     results = db.session.query(*sel).filter(graffiti_table.sample == sample).all()
+# @app.route("/piechart/<district>")
+# def piechart(district):
+# 	piechartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite:///data/pieChart.sqlite3")    
 
-#     # Create a dictionary entry for each row of metadata information
-#     graffiti_data = {}
-#     for result in results:
-#         graffiti_data["graffiti_number"] = pk_column
-#         graffiti_data["requested_datetime"] = requested_datetime
-#         graffiti_data["closed_date"] = closed_date
-#         graffiti_data["coordinates"] = coordinates
-#         graffiti_data["district"] = district
-#         graffiti_data["day_count"] = deltaDate
+# 	sel = [
+# 		piechartdf.district,
+# 		piechartdf.Count1,
+# 		piechartdf.Count2,
+# 		piechartdf.Count3,
+# 	]
 
-#     print(graffiti_data)
-#     return jsonify(graffiti_data)
+# 	results = piechartdf.session.query(*sel).filter(piechartdf.district == district).all()
 
+# 	chart_df = {}
+# 	for result in results:
+# 		chart_df["district"] = result[0]
+# 		chart_df["count1"] = result[1]
+# 		chart_df["count2"] = result[2]
+# 		chart_df["count3"] = result[3]
 
-# @app.route("/samples/<sample>")
-# def samples(sample):
-#     """Return `otu_ids`, `otu_labels`,and `sample_values`."""
-#     stmt = db.session.query(Samples).statement
-#     df = pd.read_sql_query(stmt, db.session.bind)
-
-#     # Filter the data based on the sample number and
-#     # only keep rows with values above 1
-#     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
-#     # Format the data to send as json
-#     data = {
-#         "otu_ids": sample_data.otu_id.values.tolist(),
-#         "sample_values": sample_data[sample].values.tolist(),
-#         "otu_labels": sample_data.otu_label.tolist(),
-#     }
-#     return jsonify(data)
+# 	print(chart_df)
+# 	return jsonify(chart_df)
 
 
 if __name__ == "__main__":

@@ -58,7 +58,10 @@
         </div>
         <div class="col-sm-6 col-lg-6">
             <div class="pie holderBox">
-                <div id="smallPie"></div>
+                <div id="smallPie">
+<!--                     <h5>SELECT District:</h5>
+                    <select id="selDistrict" onchange="optionChanged(this.value)"></select> -->
+                </div>
                 <div id="smallPie"></div>
                 <div id="smallPie pieLegend"><canvas id="myPieChart"></canvas></div>
                 <h1 class="pieChart">Pie Chart....</h1>
@@ -77,8 +80,9 @@
     <!-- JS  -->
     <script type="text/javascript" src="/static/js/logic.js"></script>
 
-    <script type="text/javascript" src="/static/js/appBar.js"></script>
     <script type="text/javascript" src="/static/js/appPie.js"></script>
+
+    <script type="text/javascript" src="/static/js/appBar.js"></script>    
 
   </body>
 </html>
