@@ -2,6 +2,7 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: black;
   }
   
   #map,
@@ -15,10 +16,6 @@ body {
     height: 50%;
     width: 550px;
     background-color: powderblue;
-}
-
-body {
-    background-color: black;
 }
 
 .mainParagraph {
