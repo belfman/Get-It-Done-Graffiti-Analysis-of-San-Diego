@@ -40,14 +40,11 @@ var districtLayer = L.geoJson([],{
 var url = "/data";
 var heatArray = [];
   // var $sampleMetadata = document.getElementById("sample-metadata");
-d3.json(url, function(response) {
+d3.json(url).then(function(response) {
   console.log(response);
-
   for (var i in response.lat) {
       var lat = response.lat[i];
       var long = response.long[i];
-      //console.log(lat);
-      //console.log(long);
       if (lat) {
         heatArray.push([lat, long]);
       }

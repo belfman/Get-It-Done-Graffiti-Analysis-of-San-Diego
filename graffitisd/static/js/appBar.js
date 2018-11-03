@@ -13,19 +13,29 @@ const city = {
     deltaDate: [],
 };
 
+
 // use d3 to import the csv from the data file
-d3.json("/data")
-.then((data) => { // promise note to load this info before the chart
+d3.json("/data").then(function(data) {
+// .then((data) => { // promise note to load this info before the chart
     console.log(data);
     const buffer = {};
     const chartData = [];
-    data.forEach(({district, deltaDate}) => {
-        if(buffer[district]) {
-            buffer[district].push(+deltaDate) 
-        } else {
-            buffer[district] = [+deltaDate]
+    for (var i in data.deltaDate) {
+        if (buffer.district) {
+        buffer.district.push(data.deltaDate[i])
         }
-    })
+        else {
+        buffer.district
+        }
+    }
+
+    // data.forEach(({district, deltaDate}) => {
+    //     if(buffer[district]) {
+    //         buffer[district].push(+deltaDate) 
+    //     } else {
+    //         buffer[district] = [+deltaDate]
+    //     }
+    // })
 
     for (let district in buffer) {
         chartData.push({
@@ -37,14 +47,14 @@ d3.json("/data")
 });
 
 function drawChart(data) { //define function that creates the charts
-    const { district, deltaDate} = city;
+    const {district, deltaDate} = city;
     const districts = data.map(({ district }) => district);
     const deltaDateAvgs = data.map(({ deltaDateAvg }) => deltaDateAvg);
     console.log(districts, 'districts');
     console.log(deltaDateAvgs, 'deltaDateAvgs')
 
     var graffitiChart = new Chart(myChart, {
-        type: "bar", 
+        type: "horizontalBar", 
         data: {
             labels: districts,
             datasets: [{
@@ -72,9 +82,8 @@ function drawChart(data) { //define function that creates the charts
                     fontColor: "black"
                 }
             }
-            })
-        }
-    ;
+        })
+    };
 
 
 

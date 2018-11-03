@@ -10,33 +10,33 @@ district: [],
 pieRange: [],
 };
 
+
+
 // var pie = []
 // mynewDataSet.data.forEach(function (value, i) {
 //     pie.push(new myChart)
 // })
 
 // d3.csv("./pieChart.csv")
-d3.json("/piechartdf",function(data) {
-    
+d3.json("/piechartdf").then(function(data) {
     console.log(data);
-    
-    for(var i in data){
-        city2.district.push(data[i].district);
-        city2.pieRange.push(data[i].Count1);
+    for(var i in data.district){
+        city2.district.push(data.district[i]);
+        city2.pieRange.push(data.Count1[i]);
     }
-
-    console.log(city2, 'all')
+    console.log(city2, 'all');
     drawChart2()
 });
 
 function drawChart2() {
-    const { district, pieRange} = city2;
-    var colors = ["orange", "DarkOrange", "coral", "Tomato", "OrangeRed", "Gold", "red", "Gold", "Yellow",];
+    const {district, pieRange} = city2;
+    // var colors = ["orange", "DarkOrange", "coral", "Tomato", "OrangeRed", "Gold", "red", "Gold", "Yellow",];
+    var colors = ["teal", "blue", "green", "orange", "purple", "brown", "yellow", "red", "magenta"]
     
     var graphSD = new Chart(myChart2, {
         type: "doughnut",
         data: {
-            labels: district,
+            labels: city2.district,
             datasets:[{
                 label: "Count1",
                 data: pieRange,
