@@ -1,4 +1,9 @@
 /* css for map */
+.leaflet {
+    height:500px;
+    width: 50%;
+}
+
 body {
     padding: 0;
     margin: 0;
