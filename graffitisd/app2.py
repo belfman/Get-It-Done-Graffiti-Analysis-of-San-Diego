@@ -40,16 +40,16 @@ def index():
 
 @app.route("/data")
 def data():
-    """Return the homepage."""
-    # return render_template("index2.html")
 
     # Use Pandas to perform the sql query
-    df = pd.read_sql_table(table_name = "SDGraffiti3Table", con = "sqlite:///data/SDGraffiti3.sqlite")
+    df = pd.read_sql_table(table_name = "SDGraffiti3Table", con = "sqlite:///data/SDGraffiti3.sqlite3")
     print(df)
+    piechartdf = pd.read_sql_table(table_name = "PieChart", con = "sqlite:///data/PieChart.sqlite3")
+
 
     # Return a list of the column names (sample names)
     return df.to_json()
-
+    return piechartdf.to_json()
 
 # @app.route("/metadata/<sample>")
 # def graffiti_data(sample):
