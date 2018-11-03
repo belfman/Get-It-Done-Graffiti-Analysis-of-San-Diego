@@ -42,9 +42,9 @@ def index():
 def data():
 
     # Use Pandas to perform the sql query
-    df = pd.read_sql_table(table_name = "SDGraffiti3Table", con = "sqlite:///data/SDGraffiti3.sqlite3")
+    df = pd.read_sql_table(table_name = "SDGraffiti3Table", con = "sqlite://static/data/SDGraffiti3.sqlite3")
     print(df)
-    chartdf = pd.read_sql_table(table_name = "PieChart", con = "sqlite:///data/PieChart.sqlite3")
+    chartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite://static/data/PieChart.sqlite3")
 
 
     # Return a list of the column names (sample names)
