@@ -13,48 +13,37 @@ const city = {
     deltaDate: [],
 };
 
-
 // use d3 to import the csv from the data file
-d3.json("/data").then(function(data) {
-// .then((data) => { // promise note to load this info before the chart
+d3.json("/data").then(function(data) { // promise note to load this info before the chart
     console.log(data);
     const buffer = {};
     const chartData = [];
-    for (var i in data.deltaDate) {
-        if(buffer.district) {
-        buffer.district.push(data.deltaDate[i])
-        }
-        else {
-        buffer.district
-        }
-    }
+//     data.forEach(({district, deltaDate}) => {
+//         if(buffer[district]) {
+//             buffer[district].push(+deltaDate) 
+//         } else {
+//             buffer[district] = [+deltaDate]
+//         }
+    })
 
-    // data.forEach(({district, deltaDate}) => {
-    //     if(buffer[district]) {
-    //         buffer[district].push(+deltaDate) 
-    //     } else {
-    //         buffer[district] = [+deltaDate]
-    //     }
-    // })
-
-    for (let district in buffer) {
-        chartData.push({
-            district,
-            deltaDateAvg: Math.round(buffer[district].reduce((acc, cur) => acc + cur, 0) / buffer[district].length),
-        })
-    }
-    drawChart(chartData);
-});
+//     for (let district in buffer) {
+//         chartData.push({
+//             district,
+//             deltaDateAvg: Math.round(buffer[district].reduce((acc, cur) => acc + cur, 0) / buffer[district].length),
+//         })
+//     }
+//     drawChart(chartData);
+// });
 
 // function drawChart(data) { //define function that creates the charts
-//     const {district, deltaDate} = city;
+//     const { district, deltaDate} = city;
 //     const districts = data.map(({ district }) => district);
 //     const deltaDateAvgs = data.map(({ deltaDateAvg }) => deltaDateAvg);
 //     console.log(districts, 'districts');
 //     console.log(deltaDateAvgs, 'deltaDateAvgs')
 
 //     var graffitiChart = new Chart(myChart, {
-//         type: "horizontalBar", 
+//         type: "bar", 
 //         data: {
 //             labels: districts,
 //             datasets: [{
@@ -82,8 +71,9 @@ d3.json("/data").then(function(data) {
 //                     fontColor: "black"
 //                 }
 //             }
-//         })
-//     };
+//             })
+//         }
+//     ;
 
 
 
