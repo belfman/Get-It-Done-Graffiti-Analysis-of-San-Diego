@@ -16,7 +16,7 @@ pieRange: [],
 // })
 
 // d3.csv("./pieChart.csv")
-d3.csv("/data/pieChart.csv")
+d3.csv("/static/data/pieChart.csv")
 .then((data) => {
 data.forEach(d => {
     city2.district.push(d.district);

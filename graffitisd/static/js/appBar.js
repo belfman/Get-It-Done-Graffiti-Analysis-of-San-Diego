@@ -14,7 +14,7 @@ const city = {
 };
 
 // use d3 to import the csv from the data file
-d3.csv("/data/SDGraffiti3.csv")
+d3.csv("/static/data/SDGraffiti3.csv")
 .then((data) => { // promise note to load this info before the chart
     console.log(data);
     const buffer = {};
