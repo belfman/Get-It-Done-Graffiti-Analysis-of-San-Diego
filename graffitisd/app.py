@@ -50,7 +50,7 @@ def data():
 
 @app.route("/piechartdf")
 def piechartdf():
-	chartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite:///data/PieChart.sqlite3")    
+	chartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite:///data/pieChart.sqlite3")    
 	return chartdf.to_json()
 
 # @app.route("/metadata/<sample>")
