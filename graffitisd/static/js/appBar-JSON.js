@@ -14,66 +14,66 @@ const city = {
 };
 
 // use d3 to import the csv from the data file
-d3.json("/barchartdf").then(function(data) { // promise note to load this info before the chart
-    console.log(data);
-    const buffer = {};
-    const chartData = [];
-    data.forEach(({district, deltaDate}) => {
-        if(buffer[district]) {
-            buffer[district].push(+deltaDate) 
-        } else {
-            buffer[district] = [+deltaDate]
-        }
-    })
+// d3.json("/barchartdf").then(function(data) { // promise note to load this info before the chart
+//     console.log(data);
+//     const buffer = {};
+//     const chartData = [];
+//     data.forEach(({district, deltaDate}) => {
+//         if(buffer[district]) {
+//             buffer[district].push(+deltaDate) 
+//         } else {
+//             buffer[district] = [+deltaDate]
+//         }
+//     })
 
-    for (let district in buffer) {
-        chartData.push({
-            district,
-            deltaDateAvg: Math.round(buffer[district].reduce((acc, cur) => acc + cur, 0) / buffer[district].length),
-        })
-    }
-    drawChart(chartData);
-});
+//     for (let district in buffer) {
+//         chartData.push({
+//             district,
+//             deltaDateAvg: Math.round(buffer[district].reduce((acc, cur) => acc + cur, 0) / buffer[district].length),
+//         })
+//     }
+//     drawChart(chartData);
+// });
 
-function drawChart(data) { //define function that creates the charts
-    const { district, deltaDate} = city;
-    const districts = data.map(({ district }) => district);
-    const deltaDateAvgs = data.map(({ deltaDateAvg }) => deltaDateAvg);
-    console.log(districts, 'districts');
-    console.log(deltaDateAvgs, 'deltaDateAvgs')
+// function drawChart(data) { //define function that creates the charts
+//     const { district, deltaDate} = city;
+//     const districts = data.map(({ district }) => district);
+//     const deltaDateAvgs = data.map(({ deltaDateAvg }) => deltaDateAvg);
+//     console.log(districts, 'districts');
+//     console.log(deltaDateAvgs, 'deltaDateAvgs')
 
-    var graffitiChart = new Chart(myChart, {
-        type: "bar", 
-        data: {
-            labels: districts,
-            datasets: [{
-                label: 'Avg Days' ,
-                data: deltaDateAvgs,
-                backgroundColor: "dodgerblue",
-                borderWidth: 3,
-                borderColor: "nayvblue",
-                hoverBorderWidth: 5,
-                hoverbackgroundColor: "red",
-                hoverBorderColor: "crimson",
-            }],
-        }, 
+//     var graffitiChart = new Chart(myChart, {
+//         type: "bar", 
+//         data: {
+//             labels: districts,
+//             datasets: [{
+//                 label: 'Avg Days' ,
+//                 data: deltaDateAvgs,
+//                 backgroundColor: "dodgerblue",
+//                 borderWidth: 3,
+//                 borderColor: "nayvblue",
+//                 hoverBorderWidth: 5,
+//                 hoverbackgroundColor: "red",
+//                 hoverBorderColor: "crimson",
+//             }],
+//         }, 
 
-        options: {
-            title: {
-                display: true,
-                text: "Avg # of days between Request and Close"
-            },
-            },
+//         options: {
+//             title: {
+//                 display: true,
+//                 text: "Avg # of days between Request and Close"
+//             },
+//             },
 
-            legend: {
-                position: "right",
-                labels: {
-                    fontColor: "black"
-                }
-            }
-            })
-        }
-    ;
+//             legend: {
+//                 position: "right",
+//                 labels: {
+//                     fontColor: "black"
+//                 }
+//             }
+//             })
+//         }
+//     ;
 
 
 
