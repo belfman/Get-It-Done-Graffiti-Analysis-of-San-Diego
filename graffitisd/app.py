@@ -44,11 +44,13 @@ def data():
     # Use Pandas to perform the sql query
     df = pd.read_sql_table(table_name = "SDGraffiti3Table", con = "sqlite://static/data/SDGraffiti3.sqlite3")
     print(df)
-    chartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite://static/data/PieChart.sqlite3")
-
-
-    # Return a list of the column names (sample names)
+    # Return df
     return df.to_json()
+
+
+@app.route("/piechartdf")
+def piechartdf():
+	chartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite://static/data/PieChart.sqlite3")    
     return chartdf.to_json()
 
 # @app.route("/metadata/<sample>")
