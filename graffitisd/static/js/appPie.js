@@ -23,7 +23,6 @@ d3.json("/piechartdf").then(function(data) {
 
 function drawChart() {
     const {district, pieRange} = city2;
-    // var colors = ["orange", "DarkOrange", "coral", "Tomato", "OrangeRed", "Gold", "red", "Gold", "Yellow",];
     var colors = ["teal", "blue", "green", "orange", "purple", "brown", "yellow", "red", "magenta"]
     
     var graphSD = new Chart(myChart2, {
