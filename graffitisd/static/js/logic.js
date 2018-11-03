@@ -52,7 +52,7 @@ d3.json("/data").then(function(response) {
 
 
 
-d3.json(districtlink, function(districtdata) {
+d3.json("/static/council_districts_datasd.geojson").then(function(districtdata) {
   districtLayer.addData(districtdata.features)
 });
 
