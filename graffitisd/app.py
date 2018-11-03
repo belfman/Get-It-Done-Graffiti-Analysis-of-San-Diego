@@ -45,13 +45,13 @@ def data():
     df = pd.read_sql_table(table_name = "SDGraffiti3Table", con = "sqlite:///data/SDGraffiti3.sqlite3")
     print(df)
     # Return df
-    return df.to_json()
+	return df.to_json()
 
 
 @app.route("/piechartdf")
 def piechartdf():
 	chartdf = pd.read_sql_table(table_name = "PieChartTable", con = "sqlite:///data/PieChart.sqlite3")    
-    return chartdf.to_json()
+	return chartdf.to_json()
 
 # @app.route("/metadata/<sample>")
 # def graffiti_data(sample):
