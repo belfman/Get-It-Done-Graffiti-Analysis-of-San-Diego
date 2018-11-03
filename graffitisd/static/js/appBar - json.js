@@ -14,18 +14,17 @@ const city = {
 };
 
 // use d3 to import the csv from the data file
-// d3.csv("static/data/SDGraffiti3.csv")
-// .then((data) => { // promise note to load this info before the chart
-//     console.log(data);
-//     const buffer = {};
-//     const chartData = [];
+d3.json("/data").then(function(data) { // promise note to load this info before the chart
+    console.log(data);
+    const buffer = {};
+    const chartData = [];
 //     data.forEach(({district, deltaDate}) => {
 //         if(buffer[district]) {
 //             buffer[district].push(+deltaDate) 
 //         } else {
 //             buffer[district] = [+deltaDate]
 //         }
-//     })
+    })
 
 //     for (let district in buffer) {
 //         chartData.push({
@@ -37,7 +36,7 @@ const city = {
 // });
 
 // function drawChart(data) { //define function that creates the charts
-//     const {district, deltaDate} = city;
+//     const { district, deltaDate} = city;
 //     const districts = data.map(({ district }) => district);
 //     const deltaDateAvgs = data.map(({ deltaDateAvg }) => deltaDateAvg);
 //     console.log(districts, 'districts');
