@@ -16,14 +16,17 @@ pieRange: [],
 // })
 
 // d3.csv("./pieChart.csv")
-d3.json("/piechartdf")
-.then((data) => {
-data.forEach(d => {
-    city2.district.push(d.district);
-    city2.pieRange.push(d.Count1)
-})
-console.log(city2, 'all')
-drawChart2()
+d3.json("/piechartdf",function(data) {
+    
+    console.log(data);
+    
+    for(var i in data){
+        city2.district.push(data[i].district);
+        city2.pieRange.push(data[i].Count1);
+    }
+
+    console.log(city2, 'all')
+    drawChart2()
 });
 
 function drawChart2() {
